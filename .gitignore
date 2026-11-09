@@ -1,0 +1,39 @@
+# secrets
+.env
+*.pem
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+backend/app.db
+backend/app.db-*
+backend/uploads/
+
+# node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# os / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# case study source material
+*.pdf
+!data/samples/*.pdf
+
+# demo recordings (large, personal)
+recordings/
+*.mp4
+
+# internal working material, kept locally but not published
+PLAN.md
+docs/briefs/
+docs/DEMO-SCRIPT.md
+docs/INTERVIEW-QA.md
+.claude/

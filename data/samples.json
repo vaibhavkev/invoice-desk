@@ -1,0 +1,183 @@
+[
+  {
+    "id": "HP",
+    "title": "Happy path — Meridian Cloud, PO matches exactly",
+    "scenario": "happy_path",
+    "file": "samples/HP_meridian_MCS-10422.pdf",
+    "vendor_id": "V003",
+    "expected_decision": "APPROVE",
+    "expected_rule_failures": [],
+    "demo_order": 1,
+    "notes": "Clean digital PDF, logo-block template on US Letter. Two lines exactly as PO-2026-0107, no sales tax, PO in a labelled 'PO Number' field.",
+    "invoice": {
+      "invoice_number": "MCS-10422",
+      "invoice_date": "2026-10-31",
+      "currency": "USD",
+      "po_reference": "PO-2026-0107",
+      "net_total": 4800.0,
+      "tax_rate_pct": 0.0,
+      "tax_amount": 0.0,
+      "gross_total": 4800.0
+    }
+  },
+  {
+    "id": "EC1",
+    "title": "Scanned invoice — Northwind, image-only PDF",
+    "scenario": "scanned",
+    "file": "samples/EC1_scanned_northwind_NW-7781.pdf",
+    "vendor_id": "V001",
+    "expected_decision": "APPROVE",
+    "expected_rule_failures": [],
+    "demo_order": 2,
+    "notes": "Image-only PDF (150 dpi grey scan, 1.5° skew, noise, blur; no text layer). Tax-inclusive layout: 'Total incl. VAT' is the big number, net subtotal and VAT are in small type.",
+    "invoice": {
+      "invoice_number": "NW-7781",
+      "invoice_date": "2026-10-27",
+      "currency": "GBP",
+      "po_reference": "PO-2026-0103",
+      "net_total": 1250.0,
+      "tax_rate_pct": 20.0,
+      "tax_amount": 250.0,
+      "gross_total": 1500.0
+    }
+  },
+  {
+    "id": "EC2a",
+    "title": "Split PO, part 1 — Helios, within remaining balance",
+    "scenario": "split_po_within",
+    "file": "samples/EC2a_split_helios_HFM-2026-104.pdf",
+    "vendor_id": "V004",
+    "expected_decision": "APPROVE",
+    "expected_rule_failures": [],
+    "demo_order": 3,
+    "notes": "Bundled single service line; PO only inside a sentence. German number format (4.000,00 €) and DD.MM.YYYY dates on purpose. Leaves 4,000.00 remaining on PO-2026-0105.",
+    "invoice": {
+      "invoice_number": "HFM-2026-104",
+      "invoice_date": "2026-10-30",
+      "currency": "EUR",
+      "po_reference": "PO-2026-0105",
+      "net_total": 4000.0,
+      "tax_rate_pct": 19.0,
+      "tax_amount": 760.0,
+      "gross_total": 4760.0
+    }
+  },
+  {
+    "id": "EC2b",
+    "title": "Split PO, part 2 — Helios, exceeds remaining balance",
+    "scenario": "split_po_over",
+    "file": "samples/EC2b_split_helios_HFM-2026-118.pdf",
+    "vendor_id": "V004",
+    "expected_decision": "HOLD",
+    "expected_rule_failures": [
+      "R5"
+    ],
+    "demo_order": 4,
+    "notes": "Run after EC2a: 8,000.00 billed + 8,000.00 > 12,000.00 PO, so R5 holds it. On a fresh ledger (EC2a not run) it APPROVEs and fully consumes the PO. German number format.",
+    "invoice": {
+      "invoice_number": "HFM-2026-118",
+      "invoice_date": "2026-10-31",
+      "currency": "EUR",
+      "po_reference": "PO-2026-0105",
+      "net_total": 8000.0,
+      "tax_rate_pct": 19.0,
+      "tax_amount": 1520.0,
+      "gross_total": 9520.0
+    }
+  },
+  {
+    "id": "EC4",
+    "title": "Duplicate — Meridian MCS-10398 re-sent in a new layout",
+    "scenario": "duplicate",
+    "file": "samples/EC4_duplicate_meridian_MCS-10398_resent.pdf",
+    "vendor_id": "V003",
+    "expected_decision": "REJECT",
+    "expected_rule_failures": [
+      "R3",
+      "R5"
+    ],
+    "demo_order": 5,
+    "notes": "Ledger invoice MCS-10398 re-rendered in a plain dunning template with a 'SECOND COPY' stamp and overdue footer; file hash differs from the ledger's. R5 also trips because the original already consumed PO-2026-0106.",
+    "invoice": {
+      "invoice_number": "MCS-10398",
+      "invoice_date": "2026-10-01",
+      "currency": "USD",
+      "po_reference": "PO-2026-0106",
+      "net_total": 2400.0,
+      "tax_rate_pct": 0.0,
+      "tax_amount": 0.0,
+      "gross_total": 2400.0
+    }
+  },
+  {
+    "id": "EC3",
+    "title": "Price variance — Apex flange 8% above PO",
+    "scenario": "price_variance",
+    "file": "samples/EC3_variance_apex_AIC-26-27-0931.pdf",
+    "vendor_id": "V002",
+    "expected_decision": "HOLD",
+    "expected_rule_failures": [
+      "R4",
+      "R6"
+    ],
+    "demo_order": 6,
+    "notes": "Table-heavy Indian GST tax invoice (IGST 18%, HSN summary, amount in words). Flange rate 486.00 vs PO 450.00 (+8%); PO in the 'Buyer's Order No.' cell; buyer GSTIN also on page.",
+    "invoice": {
+      "invoice_number": "AIC/26-27/0931",
+      "invoice_date": "2026-10-29",
+      "currency": "INR",
+      "po_reference": "PO-2026-0102",
+      "net_total": 157200.0,
+      "tax_rate_pct": 18.0,
+      "tax_amount": 28296.0,
+      "gross_total": 185496.0
+    }
+  },
+  {
+    "id": "EC5",
+    "title": "Missing invoice number and PO — Quantum Lab",
+    "scenario": "missing_fields",
+    "file": "samples/EC5_missing_quantum_no-number.pdf",
+    "vendor_id": "V006",
+    "expected_decision": "HOLD",
+    "expected_rule_failures": [
+      "R8"
+    ],
+    "demo_order": 7,
+    "notes": "No invoice number and no PO reference anywhere. Lines exactly as PO-2026-0109 so the PO can be inferred; R8 drafts a vendor email. R10 ignores absent fields, so only R8 fails.",
+    "invoice": {
+      "invoice_number": null,
+      "invoice_date": "2026-10-30",
+      "currency": "EUR",
+      "po_reference": null,
+      "net_total": 3150.0,
+      "tax_rate_pct": 21.0,
+      "tax_amount": 661.5,
+      "gross_total": 3811.5
+    }
+  },
+  {
+    "id": "EC6",
+    "title": "Unknown vendor — Silverline Consulting Partners",
+    "scenario": "unknown_vendor",
+    "file": "samples/EC6_unknown_silverline_SCP-0042.pdf",
+    "vendor_id": null,
+    "expected_decision": "REJECT",
+    "expected_rule_failures": [
+      "R1",
+      "R2"
+    ],
+    "demo_order": 8,
+    "notes": "Minimal Courier invoice from a vendor not in the master. PO-2026-0199 (does not exist) appears only inside the line description.",
+    "invoice": {
+      "invoice_number": "SCP-0042",
+      "invoice_date": "2026-10-28",
+      "currency": "USD",
+      "po_reference": "PO-2026-0199",
+      "net_total": 2500.0,
+      "tax_rate_pct": 0.0,
+      "tax_amount": 0.0,
+      "gross_total": 2500.0
+    }
+  }
+]

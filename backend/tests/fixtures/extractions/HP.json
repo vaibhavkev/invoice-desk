@@ -1,0 +1,127 @@
+{
+  "vendor_name": {
+    "value": "Meridian Cloud Services Inc",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Meridian Cloud Services Inc",
+      "page": 1
+    }
+  },
+  "vendor_tax_id": {
+    "value": "12-3456789",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "EIN 12-3456789",
+      "page": 1
+    }
+  },
+  "vendor_address": {
+    "value": "2201 Westlake Avenue, Suite 900, Seattle, WA 98121, USA",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "2201 Westlake Avenue, Suite 900 Seattle, WA 98121, USA",
+      "page": 1
+    }
+  },
+  "bill_to_name": {
+    "value": "Zamp Demo Customer Ltd",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Zamp Demo Customer Ltd",
+      "page": 1
+    }
+  },
+  "invoice_number": {
+    "value": "MCS-10422",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Invoice # MCS-10422",
+      "page": 1
+    }
+  },
+  "invoice_date": {
+    "value": "2026-10-31",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Invoice date Oct 31, 2026",
+      "page": 1
+    }
+  },
+  "due_date": {
+    "value": "2026-11-30",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Due date Nov 30, 2026",
+      "page": 1
+    }
+  },
+  "currency": {
+    "value": "USD",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "AMOUNT DUE (USD) $4,800.00",
+      "page": 1
+    }
+  },
+  "po_references": [
+    "PO-2026-0107"
+  ],
+  "line_items": [
+    {
+      "description": "Cloud hosting – Oct 2026",
+      "quantity": 1.0,
+      "unit_price": 3200.0,
+      "amount": 3200.0,
+      "confidence": 1.0
+    },
+    {
+      "description": "Object storage 10TB",
+      "quantity": 1.0,
+      "unit_price": 1600.0,
+      "amount": 1600.0,
+      "confidence": 1.0
+    }
+  ],
+  "subtotal": {
+    "value": 4800.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Subtotal $4,800.00",
+      "page": 1
+    }
+  },
+  "tax_amount": {
+    "value": 0.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Sales tax (0%) $0.00",
+      "page": 1
+    }
+  },
+  "tax_rate_pct": {
+    "value": 0.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Sales tax (0%)",
+      "page": 1
+    }
+  },
+  "total": {
+    "value": 4800.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "AMOUNT DUE (USD) $4,800.00",
+      "page": 1
+    }
+  },
+  "payment_terms": {
+    "value": "Net 30",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Terms Net 30",
+      "page": 1
+    }
+  },
+  "document_notes": "Clean, digitally generated single-page invoice; no stamps, handwriting, or duplicate/reminder markings. Line items sum to subtotal and total ($3,200 + $1,600 = $4,800). Invoice notes state no sales tax applies (0%). Remit-to bank: Cascade Pacific Bank, N.A., ACH routing 999000123, account 7700112233, SWIFT CPBKUS6S.",
+  "overall_confidence": 0.98
+}

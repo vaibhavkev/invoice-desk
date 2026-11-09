@@ -1,0 +1,30 @@
+# Allow-list: nothing enters the build context unless it is named here.
+*
+
+!backend/requirements.txt
+!backend/app/
+!backend/tools/
+!config.yaml
+!data/
+!deploy/entrypoint.sh
+
+!frontend/index.html
+!frontend/package.json
+!frontend/package-lock.json
+!frontend/postcss.config.js
+!frontend/tailwind.config.js
+!frontend/tsconfig.json
+!frontend/vite.config.ts
+!frontend/public/
+!frontend/src/
+
+# Never, even inside an allowed folder.
+**/.env
+**/.env.*
+**/*.db
+**/*.db-*
+**/__pycache__
+**/*.pyc
+**/.venv
+**/node_modules
+**/tests

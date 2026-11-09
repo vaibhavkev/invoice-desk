@@ -1,0 +1,127 @@
+{
+  "vendor_name": {
+    "value": "Apex Industrial Components Pvt Ltd",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Apex Industrial Components Pvt Ltd",
+      "page": 1
+    }
+  },
+  "vendor_tax_id": {
+    "value": "27AAACA1234A1Z5",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "GSTIN/UIN: 27AAACA1234A1Z5",
+      "page": 1
+    }
+  },
+  "vendor_address": {
+    "value": "Plot No. 47, MIDC Industrial Area, Bhosari, Pune 411026, Maharashtra, India",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Plot No. 47, MIDC Industrial Area, Bhosari Pune 411026, Maharashtra, India",
+      "page": 1
+    }
+  },
+  "bill_to_name": {
+    "value": "Zamp Demo Customer Ltd (India Branch)",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Zamp Demo Customer Ltd (India Branch)",
+      "page": 1
+    }
+  },
+  "invoice_number": {
+    "value": "AIC/26-27/0931",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Invoice No. AIC/26-27/0931",
+      "page": 1
+    }
+  },
+  "invoice_date": {
+    "value": "2026-10-29",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Dated 29-Oct-2026",
+      "page": 1
+    }
+  },
+  "due_date": {
+    "value": "2026-12-13",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Due Date 13-Dec-2026",
+      "page": 1
+    }
+  },
+  "currency": {
+    "value": "INR",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Total INR 185,496.00",
+      "page": 1
+    }
+  },
+  "po_references": [
+    "PO-2026-0102"
+  ],
+  "line_items": [
+    {
+      "description": "Stainless steel flange DN50 (HSN 7307)",
+      "quantity": 200.0,
+      "unit_price": 486.0,
+      "amount": 97200.0,
+      "confidence": 1.0
+    },
+    {
+      "description": "Hex bolt M12 (box of 100) (HSN 7318)",
+      "quantity": 50.0,
+      "unit_price": 1200.0,
+      "amount": 60000.0,
+      "confidence": 1.0
+    }
+  ],
+  "subtotal": {
+    "value": 157200.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Taxable Value 157,200.00",
+      "page": 1
+    }
+  },
+  "tax_amount": {
+    "value": 28296.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "IGST @ 18% 18 % 28,296.00",
+      "page": 1
+    }
+  },
+  "tax_rate_pct": {
+    "value": 18.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "IGST @ 18%",
+      "page": 1
+    }
+  },
+  "total": {
+    "value": 185496.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Total INR 185,496.00",
+      "page": 1
+    }
+  },
+  "payment_terms": {
+    "value": "45 Days",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Mode/Terms of Payment 45 Days",
+      "page": 1
+    }
+  },
+  "document_notes": "Indian GST tax invoice marked 'ORIGINAL FOR RECIPIENT'; computer generated, no visible stamps or handwriting; scan is clean. Interstate supply (Maharashtra to Karnataka) with IGST 18%; reverse charge: No. Line amounts, taxable value, tax and total reconcile (157,200.00 + 28,296.00 = 185,496.00) and match amount in words. Due date 13-Dec-2026 is consistent with 45 days from invoice date. Buyer's order PO-2026-0102 dated 10-Sep-2026. Other references: Delivery Note DN/26-27/1147, Dispatch Doc LR 558120 (Deccan Freight Carriers). Buyer GSTIN 29AABCZ9876K1Z3. Bank: Deccan Commercial Bank Ltd, A/c 50200012345678, IFSC DCBK0000417.",
+  "overall_confidence": 0.98
+}

@@ -1,0 +1,10 @@
+po_number,vendor_id,po_date,currency,net_total,status,requester_name,requester_email,description
+PO-2026-0102,V002,2026-09-10,INR,150000.00,open,Priya Nair,priya.nair@example.com,Flanges and bolts for line 3
+PO-2026-0103,V001,2026-09-20,GBP,1250.00,open,Tom Hughes,tom.hughes@example.com,Office chairs and lamps
+PO-2026-0105,V004,2026-09-01,EUR,12000.00,open,Anna Schmidt,anna.schmidt@example.com,Facility cleaning Q4
+PO-2026-0106,V003,2026-08-25,USD,2400.00,open,Sam Lee,sam.lee@example.com,Managed backup Sep 2026
+PO-2026-0107,V003,2026-09-28,USD,4800.00,open,Sam Lee,sam.lee@example.com,Cloud hosting and storage Oct 2026
+PO-2026-0109,V006,2026-10-05,EUR,3150.00,open,Lena de Vries,lena.devries@example.com,Lab consumables
+PO-2026-0090,V003,2026-08-01,USD,1000.00,closed,Sam Lee,sam.lee@example.com,Old support contract
+PO-2026-0111,V006,2026-10-08,EUR,900.00,open,Lena de Vries,lena.devries@example.com,Centrifuge service
+PO-2026-0112,V005,2026-10-02,USD,500.00,open,Sam Lee,sam.lee@example.com,Courier services

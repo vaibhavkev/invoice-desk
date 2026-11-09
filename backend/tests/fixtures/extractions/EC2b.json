@@ -1,0 +1,120 @@
+{
+  "vendor_name": {
+    "value": "Helios Facility Management GmbH",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Helios Facility Management GmbH · Leopoldstraße 112 · 80802 München",
+      "page": 1
+    }
+  },
+  "vendor_tax_id": {
+    "value": "DE123456789",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "USt-IdNr.: DE123456789",
+      "page": 1
+    }
+  },
+  "vendor_address": {
+    "value": "Leopoldstraße 112, 80802 München",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Helios Facility Management GmbH · Leopoldstraße 112 · 80802 München",
+      "page": 1
+    }
+  },
+  "bill_to_name": {
+    "value": "Zamp Demo Customer Ltd, Zweigniederlassung München",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Zamp Demo Customer Ltd",
+      "page": 1
+    }
+  },
+  "invoice_number": {
+    "value": "HFM-2026-118",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Rechnungs-Nr. / Invoice no. HFM-2026-118",
+      "page": 1
+    }
+  },
+  "invoice_date": {
+    "value": "2026-10-31",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Rechnungsdatum / Invoice date 31.10.2026",
+      "page": 1
+    }
+  },
+  "due_date": {
+    "value": "2026-11-14",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Fällig am / Due date 14.11.2026",
+      "page": 1
+    }
+  },
+  "currency": {
+    "value": "EUR",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Einzelpreis EUR /",
+      "page": 1
+    }
+  },
+  "po_references": [
+    "PO-2026-0105"
+  ],
+  "line_items": [
+    {
+      "description": "Facility cleaning services – Nov + Dec",
+      "quantity": 2.0,
+      "unit_price": 4000.0,
+      "amount": 8000.0,
+      "confidence": 1.0
+    }
+  ],
+  "subtotal": {
+    "value": 8000.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Nettobetrag / Net amount 8.000,00 €",
+      "page": 1
+    }
+  },
+  "tax_amount": {
+    "value": 1520.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "zzgl. 19 % USt. / VAT 19 % 1.520,00 €",
+      "page": 1
+    }
+  },
+  "tax_rate_pct": {
+    "value": 19.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "zzgl. 19 % USt. / VAT 19 %",
+      "page": 1
+    }
+  },
+  "total": {
+    "value": 9520.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Rechnungsbetrag / Total amount 9.520,00 €",
+      "page": 1
+    }
+  },
+  "payment_terms": {
+    "value": "14 Tage / 14 days net",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Zahlungsziel / Payment terms 14 Tage / 14 days net",
+      "page": 1
+    }
+  },
+  "document_notes": "Clean, digitally generated single-page bilingual (German/English) invoice; no stamps, handwriting, or duplicate/reminder markings. Arithmetic checks out (2 x 4,000.00 = 8,000.00 net; 19% VAT 1,520.00; total 9,520.00). Note: the invoice is dated 31.10.2026 and due 14.11.2026, but the service period is 01.11.2026–31.12.2026, so it bills in advance for services not yet rendered (payment due before most of the service period has elapsed). Customer number K-40017 is not a PO. PO reference appears only embedded in the body text ('as per your order PO-2026-0105'). The vendor VAT ID DE123456789 appears both in the header block and in the footer.",
+  "overall_confidence": 0.97
+}

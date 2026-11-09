@@ -1,0 +1,292 @@
+// Canned reference data and per-sample extraction output for the mock server.
+// Mirrors docs/SPEC.md §2.6 (scenario data) and §3.1 (InvoiceExtraction shape).
+
+export const POLICY = {
+  tolerance_pct: 0.02,
+  tolerance_abs_floor: { USD: 25, EUR: 25, GBP: 20, INR: 2000 },
+  confidence_floor: 0.75,
+  date_window_days: 90,
+  future_date_grace_days: 0,
+  duplicate_date_window_days: 3,
+  scanned_chars_per_page: 50,
+};
+
+export const MODEL = 'claude-opus-5-5';
+
+export const VENDORS = [
+  { vendor_id: 'V001', legal_name: 'Northwind Office Supplies Ltd', aliases: 'Northwind Office Supplies', tax_id: 'GB123456789', country: 'GB', currency: 'GBP', status: 'approved', payment_terms_days: 30, contact_email: 'accounts@northwind-office.example.com' },
+  { vendor_id: 'V002', legal_name: 'Apex Industrial Components Pvt Ltd', aliases: 'Apex Industrial', tax_id: '27AAACA1234A1Z5', country: 'IN', currency: 'INR', status: 'approved', payment_terms_days: 45, contact_email: 'billing@apex-industrial.example.com' },
+  { vendor_id: 'V003', legal_name: 'Meridian Cloud Services Inc', aliases: 'Meridian Cloud', tax_id: '12-3456789', country: 'US', currency: 'USD', status: 'approved', payment_terms_days: 30, contact_email: 'ar@meridiancloud.example.com' },
+  { vendor_id: 'V004', legal_name: 'Helios Facility Management GmbH', aliases: 'Helios FM', tax_id: 'DE123456789', country: 'DE', currency: 'EUR', status: 'approved', payment_terms_days: 30, contact_email: 'rechnung@helios-fm.example.com' },
+  { vendor_id: 'V005', legal_name: 'Bluegrass Logistics LLC', aliases: '', tax_id: '98-7654321', country: 'US', currency: 'USD', status: 'suspended', payment_terms_days: 30, contact_email: 'invoices@bluegrass-logistics.example.com' },
+  { vendor_id: 'V006', legal_name: 'Quantum Lab Supplies BV', aliases: 'Quantum Lab', tax_id: 'NL123456789B01', country: 'NL', currency: 'EUR', status: 'approved', payment_terms_days: 30, contact_email: 'finance@quantumlab.example.com' },
+];
+
+const po = (po_number, vendor_id, po_date, currency, net_total, status, requester_name, requester_email, description, lines) => ({
+  po_number, vendor_id, po_date, currency, net_total, status, requester_name, requester_email, description,
+  lines: lines.map(([d, q, u], i) => ({ po_number, line_no: i + 1, description: d, quantity: q, unit_price: u, line_total: Math.round(q * u * 100) / 100 })),
+});
+
+export const POS = [
+  po('PO-2026-0101', 'V001', '2026-07-21', 'GBP', 640.0, 'closed', 'Tom Hughes', 'tom.hughes@example.com', 'Printer toner restock', [['Toner cartridge TN-420', 8, 80.0]]),
+  po('PO-2026-0102', 'V002', '2026-09-15', 'INR', 150000.0, 'open', 'Priya Nair', 'priya.nair@example.com', 'Flanges and fasteners for line 3 retrofit', [['Stainless steel flange DN50', 200, 450.0], ['Hex bolt M12 (box of 100)', 50, 1200.0]]),
+  po('PO-2026-0103', 'V001', '2026-10-06', 'GBP', 1250.0, 'open', 'Tom Hughes', 'tom.hughes@example.com', 'Office furniture for the Leeds hub', [['Ergonomic chair model K2', 5, 180.0], ['Desk lamp LED', 10, 35.0]]),
+  po('PO-2026-0104', 'V005', '2026-08-30', 'USD', 7800.0, 'open', 'Marcus Reed', 'marcus.reed@example.com', 'Q4 freight forwarding', [['Freight forwarding – Q4 2026', 1, 7800.0]]),
+  po('PO-2026-0105', 'V004', '2026-09-28', 'EUR', 12000.0, 'open', 'Lena Fischer', 'lena.fischer@example.com', 'Berlin office cleaning, Oct–Dec 2026', [['Facility cleaning services – monthly', 3, 4000.0]]),
+  po('PO-2026-0106', 'V003', '2026-08-25', 'USD', 2400.0, 'open', 'Daniel Ortiz', 'daniel.ortiz@example.com', 'Managed backup, September', [['Managed backup service – Sep 2026', 1, 2400.0]]),
+  po('PO-2026-0107', 'V003', '2026-10-02', 'USD', 4800.0, 'open', 'Daniel Ortiz', 'daniel.ortiz@example.com', 'Cloud hosting and storage, October', [['Cloud hosting – Oct 2026', 1, 3200.0], ['Object storage 10TB', 1, 1600.0]]),
+  po('PO-2026-0108', 'V003', '2026-08-12', 'USD', 950.0, 'closed', 'Daniel Ortiz', 'daniel.ortiz@example.com', 'Security audit add-on', [['Security audit add-on', 1, 950.0]]),
+  po('PO-2026-0109', 'V006', '2026-10-08', 'EUR', 3150.0, 'open', 'Sofie de Vries', 'sofie.devries@example.com', 'Lab consumables, Q4', [['Nitrile gloves (box of 100)', 150, 9.0], ['Pipette tips 1000µl (rack)', 60, 30.0]]),
+  po('PO-2026-0110', 'V006', '2026-09-01', 'EUR', 1200.0, 'open', 'Sofie de Vries', 'sofie.devries@example.com', 'Petri dishes top-up', [['Petri dishes 90mm (pack of 500)', 10, 120.0]]),
+  po('PO-2026-0111', 'V002', '2026-07-10', 'INR', 48000.0, 'closed', 'Priya Nair', 'priya.nair@example.com', 'Spare gaskets', [['Spiral wound gasket DN50', 400, 120.0]]),
+  po('PO-2026-0112', 'V004', '2026-09-05', 'EUR', 2600.0, 'open', 'Lena Fischer', 'lena.fischer@example.com', 'Window cleaning, Q4', [['Window cleaning – quarterly visit', 2, 1300.0]]),
+];
+
+export const LEDGER_SEED = [
+  { invoice_number: 'HFM-2026-091', vendor_id: 'V004', invoice_date: '2026-10-05', currency: 'EUR', net_total: 4000.0, gross_total: 4760.0, po_number: 'PO-2026-0105', decision: 'APPROVE', file_hash: '', processed_at: '2026-10-07T09:12:00Z' },
+  { invoice_number: 'MCS-10398', vendor_id: 'V003', invoice_date: '2026-10-01', currency: 'USD', net_total: 2400.0, gross_total: 2400.0, po_number: 'PO-2026-0106', decision: 'APPROVE', file_hash: '', processed_at: '2026-10-03T14:40:00Z' },
+  { invoice_number: 'NW-7702', vendor_id: 'V001', invoice_date: '2026-08-14', currency: 'GBP', net_total: 640.0, gross_total: 768.0, po_number: 'PO-2026-0101', decision: 'APPROVE', file_hash: '', processed_at: '2026-08-18T10:05:00Z' },
+  { invoice_number: 'AIC/26-27/0712', vendor_id: 'V002', invoice_date: '2026-08-20', currency: 'INR', net_total: 48000.0, gross_total: 56640.0, po_number: 'PO-2026-0111', decision: 'APPROVE', file_hash: '', processed_at: '2026-08-24T08:30:00Z' },
+  { invoice_number: 'MCS-10311', vendor_id: 'V003', invoice_date: '2026-09-02', currency: 'USD', net_total: 950.0, gross_total: 950.0, po_number: 'PO-2026-0108', decision: 'APPROVE', file_hash: '', processed_at: '2026-09-04T16:20:00Z' },
+  { invoice_number: 'QLS-2026-0412', vendor_id: 'V006', invoice_date: '2026-09-18', currency: 'EUR', net_total: 600.0, gross_total: 726.0, po_number: 'PO-2026-0110', decision: 'APPROVE', file_hash: '', processed_at: '2026-09-21T11:45:00Z' },
+  { invoice_number: 'BGL-55120', vendor_id: 'V005', invoice_date: '2026-09-25', currency: 'USD', net_total: 3900.0, gross_total: 3900.0, po_number: 'PO-2026-0104', decision: 'HOLD', file_hash: '', processed_at: '2026-09-26T13:10:00Z' },
+  { invoice_number: 'HFM-2026-077', vendor_id: 'V004', invoice_date: '2026-09-12', currency: 'EUR', net_total: 1300.0, gross_total: 1547.0, po_number: 'PO-2026-0112', decision: 'APPROVE', file_hash: '', processed_at: '2026-09-15T09:55:00Z' },
+];
+
+// ---- extraction helpers ---------------------------------------------------
+const S = (value, confidence, quote, page = 1) => ({ value, confidence, evidence: quote ? { quote, page } : null });
+const N = S;
+const L = (description, quantity, unit_price, confidence) => ({ description, quantity, unit_price, amount: Math.round(quantity * unit_price * 100) / 100, confidence });
+const BILL_TO = S('Northstar Retail Group Ltd', 0.97, 'Bill to: Northstar Retail Group Ltd');
+
+export const SAMPLES = [
+  {
+    id: 'HP', title: 'Happy path — Meridian Cloud, PO matches exactly', scenario: 'happy_path',
+    file: 'samples/HP_meridian_MCS-10422.pdf', vendor_id: 'V003', expected_decision: 'APPROVE', expected_rule_failures: [], demo_order: 1,
+    notes: 'Clean digital PDF. Two lines, no tax, explicit PO.',
+  },
+  {
+    id: 'EC1', title: 'Scanned invoice — Northwind, image-only PDF', scenario: 'scanned',
+    file: 'samples/EC1_scanned_northwind_NW-7781.pdf', vendor_id: 'V001', expected_decision: 'APPROVE', expected_rule_failures: [], demo_order: 2,
+    notes: 'No text layer; rotated 1.5° with light noise. Vision extraction, lower confidence.',
+  },
+  {
+    id: 'EC2a', title: 'Split PO, part 1 — Helios, within balance', scenario: 'split_po_within',
+    file: 'samples/EC2a_split_helios_HFM-2026-104.pdf', vendor_id: 'V004', expected_decision: 'APPROVE', expected_rule_failures: [], demo_order: 3,
+    notes: 'Second invoice on PO-2026-0105 (one month already billed). 4,000.00 remains after.',
+  },
+  {
+    id: 'EC2b', title: 'Split PO, part 2 — Helios, exceeds remaining', scenario: 'split_po_over',
+    file: 'samples/EC2b_split_helios_HFM-2026-118.pdf', vendor_id: 'V004', expected_decision: 'HOLD', expected_rule_failures: ['R5'], demo_order: 4,
+    notes: 'Bills two months. HOLD on cumulative billing if run after EC2a; APPROVE on a fresh ledger.',
+  },
+  {
+    id: 'EC4', title: 'Duplicate — Meridian MCS-10398 re-sent', scenario: 'duplicate',
+    file: 'samples/EC4_duplicate_meridian_MCS-10398_resent.pdf', vendor_id: 'V003', expected_decision: 'REJECT', expected_rule_failures: ['R3', 'R5'], demo_order: 5,
+    notes: 'Already paid invoice re-sent with a new layout and an overdue reminder, so the file hash differs.',
+  },
+  {
+    id: 'EC3', title: 'Price variance — Apex, flange price +8%', scenario: 'price_variance',
+    file: 'samples/EC3_variance_apex_AIC-26-27-0931.pdf', vendor_id: 'V002', expected_decision: 'HOLD', expected_rule_failures: ['R4', 'R6'], demo_order: 6,
+    notes: 'Flange unit price 486.00 against PO 450.00.',
+  },
+  {
+    id: 'EC5', title: 'Missing data — Quantum Lab, no invoice no. or PO', scenario: 'missing_fields',
+    file: 'samples/EC5_missing_quantum_no-number.pdf', vendor_id: 'V006', expected_decision: 'HOLD', expected_rule_failures: ['R8'], demo_order: 7,
+    notes: 'PO inferred from vendor, amount and lines; drafts an email asking for the invoice number.',
+  },
+  {
+    id: 'EC6', title: 'Unknown vendor — Silverline Consulting', scenario: 'unknown_vendor',
+    file: 'samples/EC6_unknown_silverline_SCP-0042.pdf', vendor_id: null, expected_decision: 'REJECT', expected_rule_failures: ['R1', 'R2'], demo_order: 8,
+    notes: 'Vendor not in master; PO reference does not exist.',
+  },
+];
+
+// Per-sample canned content. `document_class` drives stage 2; `po_text` and
+// `extra_lines` only affect the placeholder PDF / text layer.
+export const CANNED = {
+  HP: {
+    document_class: 'digital', usage: { input_tokens: 5120, output_tokens: 1820 },
+    po_text: 'Purchase order: PO-2026-0107', extra_lines: [],
+    extraction: {
+      vendor_name: S('Meridian Cloud Services Inc', 0.99, 'Meridian Cloud Services Inc'),
+      vendor_tax_id: S('12-3456789', 0.98, 'EIN 12-3456789'),
+      vendor_address: S('500 Harbor Blvd, Suite 1200, San Francisco, CA 94105', 0.95, '500 Harbor Blvd, Suite 1200, San Francisco, CA 94105'),
+      bill_to_name: BILL_TO,
+      invoice_number: S('MCS-10422', 1.0, 'Invoice # MCS-10422'),
+      invoice_date: S('2026-10-31', 0.99, 'Invoice date: Oct 31, 2026'),
+      due_date: S('2026-11-30', 0.97, 'Due date: Nov 30, 2026'),
+      currency: S('USD', 0.95, 'Amount due (USD)'),
+      po_references: ['PO-2026-0107'],
+      line_items: [L('Cloud hosting – Oct 2026', 1, 3200.0, 0.99), L('Object storage 10TB', 1, 1600.0, 0.99)],
+      subtotal: N(4800.0, 0.99, 'Subtotal $4,800.00'),
+      tax_amount: N(0.0, 0.95, 'Tax $0.00'),
+      tax_rate_pct: N(0.0, 0.9, 'Tax (0%)'),
+      total: N(4800.0, 1.0, 'Total due $4,800.00'),
+      payment_terms: S('Net 30', 0.98, 'Terms: Net 30'),
+      document_notes: '',
+      overall_confidence: 0.98,
+    },
+  },
+  EC1: {
+    document_class: 'scanned', usage: { input_tokens: 9840, output_tokens: 1960 },
+    po_text: 'Your order ref: PO-2026-0103', extra_lines: [],
+    extraction: {
+      vendor_name: S('Northwind Office Supplies Ltd', 0.93, 'NORTHWIND OFFICE SUPPLIES LTD'),
+      vendor_tax_id: S('GB 123 4567 89', 0.88, 'VAT Reg. No. GB 123 4567 89'),
+      vendor_address: S('14 Albion Street, Leeds LS1 6AA, United Kingdom', 0.84, '14 Albion Street, Leeds LS1 6AA'),
+      bill_to_name: S('Northstar Retail Group Ltd', 0.9, 'Invoice to: Northstar Retail Group Ltd'),
+      invoice_number: S('NW-7781', 0.86, 'Invoice No: NW-7781'),
+      invoice_date: S('2026-10-27', 0.88, 'Date: 27/10/2026'),
+      due_date: S('2026-11-26', 0.82, 'Payment due: 26/11/2026'),
+      currency: S('GBP', 0.9, 'All amounts in GBP (£)'),
+      po_references: ['PO-2026-0103'],
+      line_items: [L('Ergonomic chair model K2', 5, 180.0, 0.87), L('Desk lamp LED', 10, 35.0, 0.85)],
+      subtotal: N(1250.0, 0.9, 'Subtotal £1,250.00'),
+      tax_amount: N(250.0, 0.89, 'VAT @ 20% £250.00'),
+      tax_rate_pct: N(20.0, 0.89, 'VAT @ 20%'),
+      total: N(1500.0, 0.91, 'TOTAL £1,500.00'),
+      payment_terms: S('30 days', 0.8, 'Terms: 30 days'),
+      document_notes: 'Scanned image with slight skew and speckle noise; all key values legible.',
+      overall_confidence: 0.87,
+    },
+  },
+  EC2a: {
+    document_class: 'digital', usage: { input_tokens: 5480, output_tokens: 1710 },
+    po_text: 'Ihre Bestellung / Your order: PO-2026-0105', extra_lines: [],
+    extraction: {
+      vendor_name: S('Helios Facility Management GmbH', 0.99, 'Helios Facility Management GmbH'),
+      vendor_tax_id: S('DE 123 456 789', 0.97, 'USt-IdNr.: DE 123 456 789'),
+      vendor_address: S('Friedrichstraße 88, 10117 Berlin, Germany', 0.95, 'Friedrichstraße 88, 10117 Berlin'),
+      bill_to_name: BILL_TO,
+      invoice_number: S('HFM-2026-104', 0.99, 'Rechnung / Invoice No. HFM-2026-104'),
+      invoice_date: S('2026-10-30', 0.98, 'Datum / Date: 30.10.2026'),
+      due_date: S('2026-11-29', 0.95, 'Fällig / Due: 29.11.2026'),
+      currency: S('EUR', 0.99, 'Beträge in EUR / Amounts in EUR'),
+      po_references: ['PO-2026-0105'],
+      line_items: [L('Facility cleaning services – October', 1, 4000.0, 0.98)],
+      subtotal: N(4000.0, 0.98, 'Nettobetrag / Net: 4.000,00 €'),
+      tax_amount: N(760.0, 0.98, 'MwSt. 19%: 760,00 €'),
+      tax_rate_pct: N(19.0, 0.97, 'MwSt. 19%'),
+      total: N(4760.0, 0.99, 'Gesamtbetrag / Total: 4.760,00 €'),
+      payment_terms: S('Net 30', 0.95, '30 Tage netto / Net 30'),
+      document_notes: '',
+      overall_confidence: 0.97,
+    },
+  },
+  EC2b: {
+    document_class: 'digital', usage: { input_tokens: 5510, output_tokens: 1730 },
+    po_text: 'Ihre Bestellung / Your order: PO-2026-0105', extra_lines: [],
+    extraction: {
+      vendor_name: S('Helios Facility Management GmbH', 0.99, 'Helios Facility Management GmbH'),
+      vendor_tax_id: S('DE 123 456 789', 0.97, 'USt-IdNr.: DE 123 456 789'),
+      vendor_address: S('Friedrichstraße 88, 10117 Berlin, Germany', 0.95, 'Friedrichstraße 88, 10117 Berlin'),
+      bill_to_name: BILL_TO,
+      invoice_number: S('HFM-2026-118', 0.99, 'Rechnung / Invoice No. HFM-2026-118'),
+      invoice_date: S('2026-10-31', 0.98, 'Datum / Date: 31.10.2026'),
+      due_date: S('2026-11-30', 0.95, 'Fällig / Due: 30.11.2026'),
+      currency: S('EUR', 0.99, 'Beträge in EUR / Amounts in EUR'),
+      po_references: ['PO-2026-0105'],
+      line_items: [L('Facility cleaning services – Nov + Dec', 2, 4000.0, 0.97)],
+      subtotal: N(8000.0, 0.98, 'Nettobetrag / Net: 8.000,00 €'),
+      tax_amount: N(1520.0, 0.98, 'MwSt. 19%: 1.520,00 €'),
+      tax_rate_pct: N(19.0, 0.97, 'MwSt. 19%'),
+      total: N(9520.0, 0.99, 'Gesamtbetrag / Total: 9.520,00 €'),
+      payment_terms: S('Net 30', 0.95, '30 Tage netto / Net 30'),
+      document_notes: 'Single line bills two months (November and December) in advance.',
+      overall_confidence: 0.97,
+    },
+  },
+  EC3: {
+    document_class: 'digital', usage: { input_tokens: 6020, output_tokens: 1890 },
+    po_text: 'Buyer PO No.: PO-2026-0102', extra_lines: ['Place of supply: Maharashtra (27)'],
+    extraction: {
+      vendor_name: S('Apex Industrial Components Pvt Ltd', 0.99, 'Apex Industrial Components Pvt Ltd'),
+      vendor_tax_id: S('27AAACA1234A1Z5', 0.99, 'GSTIN: 27AAACA1234A1Z5'),
+      vendor_address: S('Plot 42, MIDC Bhosari, Pune 411026, Maharashtra, India', 0.94, 'Plot 42, MIDC Bhosari, Pune 411026'),
+      bill_to_name: BILL_TO,
+      invoice_number: S('AIC/26-27/0931', 0.98, 'Tax Invoice No. AIC/26-27/0931'),
+      invoice_date: S('2026-10-29', 0.98, 'Invoice Date: 29-Oct-2026'),
+      due_date: S('2026-12-13', 0.95, 'Due Date: 13-Dec-2026'),
+      currency: S('INR', 0.97, 'Amount in INR'),
+      po_references: ['PO-2026-0102'],
+      line_items: [L('Stainless steel flange DN50', 200, 486.0, 0.98), L('Hex bolt M12 (box of 100)', 50, 1200.0, 0.98)],
+      subtotal: N(157200.0, 0.97, 'Taxable Value 1,57,200.00'),
+      tax_amount: N(28296.0, 0.97, 'IGST @ 18% 28,296.00'),
+      tax_rate_pct: N(18.0, 0.97, 'IGST @ 18%'),
+      total: N(185496.0, 0.98, 'Grand Total 1,85,496.00'),
+      payment_terms: S('Net 45 days', 0.93, 'Payment terms: Net 45 days'),
+      document_notes: '',
+      overall_confidence: 0.97,
+    },
+  },
+  EC4: {
+    document_class: 'digital', usage: { input_tokens: 4980, output_tokens: 1650 },
+    po_text: 'Reference: PO-2026-0106', extra_lines: ['Reminder: payment overdue'],
+    extraction: {
+      vendor_name: S('Meridian Cloud Services Inc', 0.98, 'MERIDIAN CLOUD SERVICES INC'),
+      vendor_tax_id: S('12-3456789', 0.97, 'Tax ID 12-3456789'),
+      vendor_address: S('500 Harbor Blvd, Suite 1200, San Francisco, CA 94105', 0.94, '500 Harbor Blvd, Suite 1200'),
+      bill_to_name: BILL_TO,
+      invoice_number: S('MCS-10398', 0.99, 'Invoice MCS-10398'),
+      invoice_date: S('2026-10-01', 0.98, 'Issued 2026-10-01'),
+      due_date: S('2026-10-31', 0.96, 'Payment due 2026-10-31'),
+      currency: S('USD', 0.95, 'Balance due USD 2,400.00'),
+      po_references: ['PO-2026-0106'],
+      line_items: [L('Managed backup service – Sep 2026', 1, 2400.0, 0.98)],
+      subtotal: N(2400.0, 0.97, 'Subtotal 2,400.00'),
+      tax_amount: N(0.0, 0.93, 'Sales tax 0.00'),
+      tax_rate_pct: N(0.0, 0.9, 'Sales tax 0.00'),
+      total: N(2400.0, 0.99, 'Balance due USD 2,400.00'),
+      payment_terms: S('Net 30', 0.95, 'Net 30'),
+      document_notes: 'Footer reads "Reminder: payment overdue". Layout differs from this vendor’s usual template.',
+      overall_confidence: 0.97,
+    },
+  },
+  EC5: {
+    document_class: 'digital', usage: { input_tokens: 5360, output_tokens: 1580 },
+    po_text: null, extra_lines: [],
+    extraction: {
+      vendor_name: S('Quantum Lab Supplies BV', 0.98, 'Quantum Lab Supplies BV'),
+      vendor_tax_id: S('NL123456789B01', 0.97, 'BTW-nr: NL123456789B01'),
+      vendor_address: S('Science Park 140, 1098 XG Amsterdam, Netherlands', 0.93, 'Science Park 140, 1098 XG Amsterdam'),
+      bill_to_name: BILL_TO,
+      invoice_number: S(null, 0.0, null),
+      invoice_date: S('2026-10-30', 0.96, 'Datum / Date: 30 October 2026'),
+      due_date: S('2026-11-29', 0.9, 'Pay by 29 November 2026'),
+      currency: S('EUR', 0.97, 'Totaal / Total EUR 3.811,50'),
+      po_references: [],
+      line_items: [L('Nitrile gloves (box of 100)', 150, 9.0, 0.97), L('Pipette tips 1000µl (rack)', 60, 30.0, 0.96)],
+      subtotal: N(3150.0, 0.96, 'Subtotaal / Subtotal EUR 3.150,00'),
+      tax_amount: N(661.5, 0.96, 'BTW 21% EUR 661,50'),
+      tax_rate_pct: N(21.0, 0.96, 'BTW 21%'),
+      total: N(3811.5, 0.97, 'Totaal / Total EUR 3.811,50'),
+      payment_terms: S('Payment within 30 days', 0.9, 'Payment within 30 days'),
+      document_notes: 'No invoice number printed anywhere on the document. No purchase order reference found.',
+      overall_confidence: 0.82,
+    },
+  },
+  EC6: {
+    document_class: 'digital', usage: { input_tokens: 4710, output_tokens: 1490 },
+    po_text: 'PO: PO-2026-0199', extra_lines: [],
+    extraction: {
+      vendor_name: S('Silverline Consulting Partners', 0.97, 'Silverline Consulting Partners'),
+      vendor_tax_id: S('45-1122334', 0.92, 'EIN 45-1122334'),
+      vendor_address: S('2200 Peachtree Rd NW, Atlanta, GA 30309', 0.9, '2200 Peachtree Rd NW, Atlanta, GA 30309'),
+      bill_to_name: BILL_TO,
+      invoice_number: S('SCP-0042', 0.98, 'Invoice SCP-0042'),
+      invoice_date: S('2026-10-28', 0.97, 'Date: October 28, 2026'),
+      due_date: S('2026-10-28', 0.85, 'Due on receipt'),
+      currency: S('USD', 0.8, 'Total $2,500.00'),
+      po_references: ['PO-2026-0199'],
+      line_items: [L('Strategy workshop facilitation (2 days)', 1, 2500.0, 0.97)],
+      subtotal: N(2500.0, 0.96, 'Subtotal $2,500.00'),
+      tax_amount: N(0.0, 0.9, 'Tax $0.00'),
+      tax_rate_pct: N(0.0, 0.85, 'Tax $0.00'),
+      total: N(2500.0, 0.98, 'Total $2,500.00'),
+      payment_terms: S('Due on receipt', 0.95, 'Due on receipt'),
+      document_notes: 'Only a $ symbol is shown; currency inferred as USD from the US address.',
+      overall_confidence: 0.93,
+    },
+  },
+};

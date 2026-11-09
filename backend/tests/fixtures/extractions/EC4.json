@@ -1,0 +1,120 @@
+{
+  "vendor_name": {
+    "value": "Meridian Cloud Services Inc",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Meridian Cloud Services Inc",
+      "page": 1
+    }
+  },
+  "vendor_tax_id": {
+    "value": "12-3456789",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "EIN 12-3456789",
+      "page": 1
+    }
+  },
+  "vendor_address": {
+    "value": "2201 Westlake Avenue, Suite 900, Seattle, WA 98121, USA",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "2201 Westlake Avenue, Suite 900 · Seattle, WA 98121, USA",
+      "page": 1
+    }
+  },
+  "bill_to_name": {
+    "value": "Zamp Demo Customer Ltd",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Zamp Demo Customer Ltd",
+      "page": 1
+    }
+  },
+  "invoice_number": {
+    "value": "MCS-10398",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Invoice No. MCS-10398",
+      "page": 1
+    }
+  },
+  "invoice_date": {
+    "value": "2026-10-01",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Invoice Date October 1, 2026",
+      "page": 1
+    }
+  },
+  "due_date": {
+    "value": "2026-10-31",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Due Date October 31, 2026",
+      "page": 1
+    }
+  },
+  "currency": {
+    "value": "USD",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Total (USD) 2,400.00",
+      "page": 1
+    }
+  },
+  "po_references": [
+    "PO-2026-0106"
+  ],
+  "line_items": [
+    {
+      "description": "Managed backup service – Sep 2026",
+      "quantity": 1.0,
+      "unit_price": 2400.0,
+      "amount": 2400.0,
+      "confidence": 1.0
+    }
+  ],
+  "subtotal": {
+    "value": 2400.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Subtotal 2,400.00",
+      "page": 1
+    }
+  },
+  "tax_amount": {
+    "value": 0.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Tax (0%) 0.00",
+      "page": 1
+    }
+  },
+  "tax_rate_pct": {
+    "value": 0.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Tax (0%) 0.00",
+      "page": 1
+    }
+  },
+  "total": {
+    "value": 2400.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Total (USD) 2,400.00",
+      "page": 1
+    }
+  },
+  "payment_terms": {
+    "value": "Net 30",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Terms Net 30",
+      "page": 1
+    }
+  },
+  "document_notes": "Document bears a red 'SECOND COPY' stamp and a footer 'Reminder: payment overdue — second copy'. Body text states the invoice remains unpaid and a copy is enclosed; footer says to disregard if already paid. This is a re-sent copy of invoice MCS-10398 — check for possible duplicate payment against the original. The dates also need a check: the footer says payment is overdue, but the printed due date is October 31, 2026, only 30 days after the invoice date. Remittance details printed: Cascade Pacific Bank, N.A., ACH routing 999000123, account 7700112233, SWIFT CPBKUS6S — verify against vendor master data. Printed amounts add up (2,400.00 + 0.00 tax = 2,400.00).",
+  "overall_confidence": 0.97
+}

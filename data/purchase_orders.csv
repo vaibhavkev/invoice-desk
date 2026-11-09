@@ -1,0 +1,14 @@
+po_number,vendor_id,po_date,currency,net_total,status,requester_name,requester_email,description
+PO-2026-0101,V001,2026-08-17,GBP,1394.00,closed,Tom Hughes,tom.hughes@example.com,"Copier paper and toner, Q3 restock"
+PO-2026-0102,V002,2026-09-10,INR,150000.00,open,Priya Nair,priya.nair@example.com,Flanges and fasteners for Bengaluru plant line 2
+PO-2026-0103,V001,2026-10-06,GBP,1250.00,open,Tom Hughes,tom.hughes@example.com,"Ergonomic seating and desk lighting, London office 3rd floor"
+PO-2026-0104,V002,2026-08-18,INR,55300.00,closed,Priya Nair,priya.nair@example.com,Machined brackets and washers for plant line 1
+PO-2026-0105,V004,2026-08-20,EUR,12000.00,open,Lena Fischer,lena.fischer@example.com,"Office cleaning, Munich branch, Sep-Nov 2026 (3 months)"
+PO-2026-0106,V003,2026-08-25,USD,2400.00,open,Daniel Kim,daniel.kim@example.com,"Managed backup service, September 2026"
+PO-2026-0107,V003,2026-09-28,USD,4800.00,open,Daniel Kim,daniel.kim@example.com,"Cloud hosting and object storage, October 2026"
+PO-2026-0108,V005,2026-08-19,USD,2000.00,closed,Marcus Reed,marcus.reed@example.com,"Freight Newark to Columbus, August consolidation"
+PO-2026-0109,V006,2026-10-12,EUR,3150.00,open,Sanne de Vries,sanne.devries@example.com,"Lab consumables restock, Amsterdam lab"
+PO-2026-0110,V006,2026-08-27,EUR,852.00,closed,Sanne de Vries,sanne.devries@example.com,Centrifuge tubes and lab wipes
+PO-2026-0111,V003,2026-09-24,USD,2850.00,open,Daniel Kim,daniel.kim@example.com,"Managed security monitoring, Q4 2026"
+PO-2026-0112,V004,2026-08-21,EUR,3400.00,closed,Lena Fischer,lena.fischer@example.com,"HVAC preventive maintenance, Munich branch"
+PO-2026-0113,V001,2026-09-30,GBP,1918.00,open,Tom Hughes,tom.hughes@example.com,"Meeting room furniture, London office"

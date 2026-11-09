@@ -1,0 +1,7 @@
+vendor_id,legal_name,aliases,tax_id,country,currency,status,payment_terms_days,contact_email
+V001,Northwind Office Supplies Ltd,Northwind Office Supplies,GB123456789,GB,GBP,approved,30,accounts@northwind.example.co.uk
+V002,Apex Industrial Components Pvt Ltd,Apex Industrial,27AAACA1234A1Z5,IN,INR,approved,45,billing@apex.example.in
+V003,Meridian Cloud Services Inc,Meridian Cloud,12-3456789,US,USD,approved,30,ar@meridian.example.com
+V004,Helios Facility Management GmbH,Helios FM,DE123456789,DE,EUR,approved,30,rechnung@helios.example.de
+V005,Bluegrass Logistics LLC,,98-7654321,US,USD,suspended,30,billing@bluegrass.example.com
+V006,Quantum Lab Supplies BV,Quantum Lab,NL123456789B01,NL,EUR,approved,30,finance@quantumlab.example.nl

@@ -1,0 +1,17 @@
+policy:
+  tolerance_pct: 0.02                # applied to totals and unit prices
+  tolerance_abs_floor:               # per currency, applied to TOTALS only
+    USD: 25
+    EUR: 25
+    GBP: 20
+    INR: 2000
+  confidence_floor: 0.75             # R10: min confidence on critical fields
+  date_window_days: 90               # R9: invoice must be within this many days
+  future_date_grace_days: 0          # R9: invoice date may not be after today + grace
+  duplicate_date_window_days: 3      # R3: fuzzy duplicate window
+  scanned_chars_per_page: 50         # stage 2: fewer chars than this = scanned page
+extraction:
+  model: claude-opus-5-5             # overridden by env EXTRACTION_MODEL
+  effort: medium
+  max_tokens: 8000
+  cache_fallback: true               # on API error, use cached extraction if present

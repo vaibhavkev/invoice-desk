@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    @apply bg-canvas text-ink-900 antialiased;
+    font-feature-settings: 'cv11', 'ss01', 'tnum' 0;
+    scrollbar-gutter: stable;
+  }
+  body {
+    @apply min-h-screen bg-canvas font-sans text-[14px] leading-normal;
+  }
+  /* One consistent, visible keyboard focus style. */
+  :focus-visible {
+    outline: 2px solid theme('colors.running.DEFAULT');
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+  ::selection {
+    background: theme('colors.running.line');
+  }
+}
+
+@layer components {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .table-base {
+    @apply w-full border-separate border-spacing-0 text-sm;
+  }
+  .table-base th {
+    @apply sticky top-0 z-[1] border-b border-ink-200 bg-ink-50 px-2.5 py-2 xl:px-3 text-left text-[11px] font-semibold uppercase tracking-[0.06em] text-ink-500;
+  }
+  .table-base td {
+    @apply border-b border-ink-100 px-2.5 py-2.5 align-middle xl:px-3 text-ink-900;
+  }
+  .table-base tr:last-child td {
+    @apply border-b-0;
+  }
+  .num {
+    @apply text-right tabular-nums;
+  }
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.ink.300') transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

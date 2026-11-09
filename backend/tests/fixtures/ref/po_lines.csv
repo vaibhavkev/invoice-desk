@@ -1,0 +1,14 @@
+po_number,line_no,description,quantity,unit_price,line_total
+PO-2026-0102,1,Stainless steel flange DN50,200,450.00,90000.00
+PO-2026-0102,2,Hex bolt M12 (box of 100),50,1200.00,60000.00
+PO-2026-0103,1,Ergonomic chair model K2,5,180.00,900.00
+PO-2026-0103,2,Desk lamp LED,10,35.00,350.00
+PO-2026-0105,1,Facility cleaning services – monthly,3,4000.00,12000.00
+PO-2026-0106,1,Managed backup service – Sep 2026,1,2400.00,2400.00
+PO-2026-0107,1,Cloud hosting – Oct 2026,1,3200.00,3200.00
+PO-2026-0107,2,Object storage 10TB,1,1600.00,1600.00
+PO-2026-0109,1,Nitrile gloves (box of 100),150,9.00,1350.00
+PO-2026-0109,2,Pipette tips 1000µl (rack),60,30.00,1800.00
+PO-2026-0090,1,Support contract,1,1000.00,1000.00
+PO-2026-0111,1,Centrifuge annual service,1,900.00,900.00
+PO-2026-0112,1,Courier services,1,500.00,500.00

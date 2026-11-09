@@ -1,0 +1,120 @@
+{
+  "vendor_name": {
+    "value": "SILVERLINE CONSULTING PARTNERS",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "SILVERLINE CONSULTING PARTNERS",
+      "page": 1
+    }
+  },
+  "vendor_tax_id": {
+    "value": "45-6789012",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "EIN 45-6789012",
+      "page": 1
+    }
+  },
+  "vendor_address": {
+    "value": "1100 Congress Avenue, Suite 400, Austin, TX 78701",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "1100 Congress Avenue, Suite 400",
+      "page": 1
+    }
+  },
+  "bill_to_name": {
+    "value": "Zamp Demo Customer Ltd",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Zamp Demo Customer Ltd",
+      "page": 1
+    }
+  },
+  "invoice_number": {
+    "value": "SCP-0042",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "INVOICE SCP-0042",
+      "page": 1
+    }
+  },
+  "invoice_date": {
+    "value": "2026-10-28",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Date: October 28, 2026",
+      "page": 1
+    }
+  },
+  "due_date": {
+    "value": "2026-11-12",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Due: November 12, 2026",
+      "page": 1
+    }
+  },
+  "currency": {
+    "value": "USD",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "TOTAL DUE (USD) 2,500.00",
+      "page": 1
+    }
+  },
+  "po_references": [
+    "PO-2026-0199"
+  ],
+  "line_items": [
+    {
+      "description": "Strategy workshop facilitation – ref. PO-2026-0199",
+      "quantity": 1.0,
+      "unit_price": 2500.0,
+      "amount": 2500.0,
+      "confidence": 1.0
+    }
+  ],
+  "subtotal": {
+    "value": 2500.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Subtotal 2,500.00",
+      "page": 1
+    }
+  },
+  "tax_amount": {
+    "value": 0.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Tax (0%) 0.00",
+      "page": 1
+    }
+  },
+  "tax_rate_pct": {
+    "value": 0.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Tax (0%)",
+      "page": 1
+    }
+  },
+  "total": {
+    "value": 2500.0,
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "TOTAL DUE (USD) 2,500.00",
+      "page": 1
+    }
+  },
+  "payment_terms": {
+    "value": "Net 15",
+    "confidence": 1.0,
+    "evidence": {
+      "quote": "Terms: Net 15",
+      "page": 1
+    }
+  },
+  "document_notes": "Clean, single-page digitally generated invoice; no stamps, handwriting, or duplicate/reminder markings. PO reference PO-2026-0199 appears within the line item description. Totals reconcile (2,500.00 + 0.00 tax = 2,500.00). Due date is consistent with Net 15 from invoice date. Payment instructions: wire/ACH to Lone Star Commerce Bank, routing 999000456, account 3301987654.",
+  "overall_confidence": 0.98
+}
